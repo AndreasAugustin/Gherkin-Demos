@@ -53,7 +53,7 @@ public class SoundexTestGherkin {
         _encodedDigit = _soundex.encodedDigit(character);
     }
 
-    @Then("^the it is equal to other character \"([^\"]*)\"$")
+    @Then("^it is equal to other character \"([^\"]*)\"$")
     public void theItIsEqualToOtherCharacter(final Character otherCharacter) {
         String otherEncodedDigit = _soundex.encodedDigit(otherCharacter);
         assertThat(otherEncodedDigit, is(equalTo(_encodedDigit)));

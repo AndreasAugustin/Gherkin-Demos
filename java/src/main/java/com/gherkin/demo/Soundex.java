@@ -17,6 +17,7 @@ public class Soundex {
     private static final String EMPTY_STRING = "";
     private static final int MAX_CODE_LENGTH = 4;
     private static final Map<Character, String> encodingsMap = createMap();
+    private static final String NOT_A_DIGIT = "*";
 
     private static Map<Character, String> createMap() {
         Map<Character, String> map = new HashMap<>();
@@ -54,7 +55,7 @@ public class Soundex {
 
     public String encodedDigit(char letter) {
         final String ret = encodingsMap.get(letter);
-        return ret != null ? ret : EMPTY_STRING;
+        return ret != null ? ret : NOT_A_DIGIT;
     }
 
     private String upperFront(final String string) {
@@ -76,8 +77,10 @@ public class Soundex {
                 break;
             }
 
-            if (!Objects.equals(
-                    encodedDigit(letter), lastDigit(builder.toString()))) {
+            String digit = encodedDigit(letter);
+
+            if (!Objects.equals(digit, NOT_A_DIGIT) &&
+                    !Objects.equals(digit, lastDigit(builder.toString()))) {
                 builder.append(encodedDigit(letter));
             }
         }
@@ -87,7 +90,7 @@ public class Soundex {
 
     private String lastDigit(final String encoding) {
         if (encoding.isEmpty()) {
-            return EMPTY_STRING;
+            return NOT_A_DIGIT;
         }
 
         return encoding.substring(encoding.length() - 1);
