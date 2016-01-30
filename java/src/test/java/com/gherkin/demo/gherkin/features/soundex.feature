@@ -34,9 +34,17 @@ Feature: Soundex algorithm
   Scenario Outline: A word is given to soundex algorithm
     Given A soundex instance
     When I enter the character "<character>"
-    Then it is equal to other character "<other character>"
+    Then it is equal to other encoded character "<other character>"
     Examples:
       | character | other character |
       | b         | f               |
       | c         | g               |
       | d         | t               |
+
+  Scenario Outline: A word is given to soundex algorithm
+    Given A soundex instance
+    When I enter the string "<string>"
+    Then it is equal to other encoded string "<other string>"
+    Examples:
+      | string | other string |
+      | BCDL   | Bcdl         |

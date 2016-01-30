@@ -21,7 +21,6 @@ public class SoundexTestGherkin {
 
     private Soundex _soundex;
     private String _encoded;
-    private String _encodedDigit;
 
     @Given("^A soundex instance$")
     public void aSoundexInstance() {
@@ -30,17 +29,17 @@ public class SoundexTestGherkin {
 
     @When("^I enter a word as \"([^\"]*)\"$")
     public void iEnterAWordAs(final String word) {
-        encode(word);
+        _encoded = _soundex.encode(word);
     }
 
     @Then("^it is encoded to \"([^\"]*)\"$")
     public void itIsEncodedTo(final String encoded) {
-        assertEncoding(encoded);
+        assertThat(encoded, is(equalTo(_encoded)));
     }
 
     @When("^I enter the word \"([^\"]*)\"$")
     public void iEnterTheWordAs(final String word) {
-        encode(word);
+        _encoded = _soundex.encode(word);
     }
 
     @Then("^the encoded length is equal to \"([^\"]*)\"$")
@@ -50,18 +49,18 @@ public class SoundexTestGherkin {
 
     @When("^I enter the character \"([^\"]*)\"$")
     public void iEnterTheCharacter(final Character character) {
-        _encodedDigit = _soundex.encodedDigit(character);
+        _encoded = _soundex.encodedDigit(character);
     }
 
-    @Then("^it is equal to other character \"([^\"]*)\"$")
+    @Then("^it is equal to other encoded character \"([^\"]*)\"$")
     public void theItIsEqualToOtherCharacter(final Character otherCharacter) {
         String otherEncodedDigit = _soundex.encodedDigit(otherCharacter);
-        assertThat(otherEncodedDigit, is(equalTo(_encodedDigit)));
+        assertThat(otherEncodedDigit, is(equalTo(_encoded)));
     }
 
     @When("^I enter the lower case word \"([^\"]*)\"$")
     public void iEnterTheLowerCaseWord(final String word) {
-        encode(word);
+        _encoded = _soundex.encode(word);
     }
 
     @Then("^the encoded first letter is equal to \"([^\"]*)\"$")
@@ -69,11 +68,14 @@ public class SoundexTestGherkin {
         assertThat(_encoded, startsWith(encodedFirstLetter));
     }
 
-    private void encode(final String word) {
-        _encoded = _soundex.encode(word);
+    @When("^I enter the string \"([^\"]*)\"$")
+    public void iEnterTheString(final String string) throws Throwable {
+        _encoded = _soundex.encode(string);
     }
 
-    private void assertEncoding(final String encoded) {
-        assertThat(encoded, is(equalTo(_encoded)));
+    @Then("^it is equal to other encoded string \"([^\"]*)\"$")
+    public void itIsEqualToOtherEncodedString(final String otherString) throws Throwable {
+        String _otherStringEncoded = _soundex.encode(otherString);
+        assertThat(_encoded, is(equalTo(_otherStringEncoded)));
     }
 }

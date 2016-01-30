@@ -54,8 +54,12 @@ public class Soundex {
     }
 
     public String encodedDigit(char letter) {
-        final String ret = encodingsMap.get(letter);
+        final String ret = encodingsMap.get(lower(letter));
         return ret != null ? ret : NOT_A_DIGIT;
+    }
+
+    private Character lower(final Character character) {
+        return Character.toLowerCase(character);
     }
 
     private String upperFront(final String string) {
