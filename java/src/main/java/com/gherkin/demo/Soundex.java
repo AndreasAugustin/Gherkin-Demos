@@ -6,6 +6,7 @@ package com.gherkin.demo;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by andy on 1/30/16.
@@ -51,6 +52,11 @@ public class Soundex {
         return zeroPad(head(word) + encodedDigits(tail(word)));
     }
 
+    public String encodedDigit(char letter) {
+        final String ret = encodingsMap.get(letter);
+        return ret != null ? ret : EMPTY_STRING;
+    }
+
     private String head(final String word) {
         return word.substring(0, 1);
     }
@@ -66,19 +72,25 @@ public class Soundex {
                 break;
             }
 
-            builder.append(encodedDigit(letter));
+            if (!Objects.equals(
+                    encodedDigit(letter), lastDigit(builder.toString()))) {
+                builder.append(encodedDigit(letter));
+            }
         }
 
         return builder.toString();
     }
 
-    private Boolean isComplete(final StringBuilder encoding) {
-        return encoding.length() == MAX_CODE_LENGTH - 1;
+    private String lastDigit(final String encoding) {
+        if (encoding.isEmpty()) {
+            return EMPTY_STRING;
+        }
+
+        return encoding.substring(encoding.length() - 1);
     }
 
-    private String encodedDigit(char letter) {
-        final String ret = encodingsMap.get(letter);
-        return ret != null ? ret : EMPTY_STRING;
+    private Boolean isComplete(final StringBuilder encoding) {
+        return encoding.length() == MAX_CODE_LENGTH - 1;
     }
 
     private String zeroPad(String word) {

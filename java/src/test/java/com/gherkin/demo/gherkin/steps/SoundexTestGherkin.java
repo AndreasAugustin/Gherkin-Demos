@@ -20,6 +20,7 @@ public class SoundexTestGherkin {
 
     private Soundex _soundex;
     private String _encoded;
+    private String _encodedDigit;
 
     @Given("^A soundex instance$")
     public void aSoundexInstance() {
@@ -52,5 +53,16 @@ public class SoundexTestGherkin {
 
     private void assertEncoding(final String encoded) {
         assertThat(encoded, is(equalTo(_encoded)));
+    }
+
+    @When("^I enter the character \"([^\"]*)\"$")
+    public void iEnterTheCharacter(final Character character) {
+        _encodedDigit = _soundex.encodedDigit(character);
+    }
+
+    @Then("^the it is equal to other character \"([^\"]*)\"$")
+    public void theItIsEqualToOtherCharacter(final Character otherCharacter) {
+        String otherEncodedDigit = _soundex.encodedDigit(otherCharacter);
+        assertThat(otherEncodedDigit, is(equalTo(_encodedDigit)));
     }
 }

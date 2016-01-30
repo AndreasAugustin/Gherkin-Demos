@@ -18,7 +18,7 @@ Feature: Soundex algorithm
       | A#          | A000    |
       | Acdl        | A234    |
       | Baeiouhycdl | B234    |
-      #| Abfcgdt     | A123    |
+      | Abfcgdt     | A123    |
 
   Scenario: A word is given to soundex algorithm
     Given A soundex instance
