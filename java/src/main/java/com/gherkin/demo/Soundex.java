@@ -49,8 +49,8 @@ public class Soundex {
     }
 
     public String encode(final String word) {
-
-        return zeroPad(head(upperFront(word)) + encodedDigits(tail(word)));
+        return zeroPad(upperFront(head(upperFront(word)))
+                + encodedDigits(tail(word)));
     }
 
     public String encodedDigit(char letter) {
@@ -76,6 +76,7 @@ public class Soundex {
 
     private String encodedDigits(final String word) {
         StringBuilder builder = new StringBuilder();
+
         for (char letter : word.toCharArray()) {
             if (isComplete(builder)) {
                 break;

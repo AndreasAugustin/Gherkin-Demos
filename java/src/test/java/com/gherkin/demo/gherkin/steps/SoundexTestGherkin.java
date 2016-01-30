@@ -34,7 +34,7 @@ public class SoundexTestGherkin {
 
     @Then("^it is encoded to \"([^\"]*)\"$")
     public void itIsEncodedTo(final String encoded) {
-        assertThat(encoded, is(equalTo(_encoded)));
+        assertThat(_encoded, is(equalTo(encoded)));
     }
 
     @When("^I enter the word \"([^\"]*)\"$")
@@ -55,7 +55,7 @@ public class SoundexTestGherkin {
     @Then("^it is equal to other encoded character \"([^\"]*)\"$")
     public void theItIsEqualToOtherCharacter(final Character otherCharacter) {
         String otherEncodedDigit = _soundex.encodedDigit(otherCharacter);
-        assertThat(otherEncodedDigit, is(equalTo(_encoded)));
+        assertThat(_encoded, is(equalTo(otherEncodedDigit)));
     }
 
     @When("^I enter the lower case word \"([^\"]*)\"$")
