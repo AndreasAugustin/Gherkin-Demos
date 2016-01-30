@@ -18,8 +18,19 @@ Feature: Soundex algorithm
       | A#          | A000    |
       | Acdl        | A234    |
       | Baeiouhycdl | B234    |
+      #| Abfcgdt     | A123    |
 
   Scenario: A word is given to soundex algorithm
     Given A soundex instance
     When I enter the word as "Dcdlb"
     Then the encoded length is equal to "4u"
+
+  Scenario Outline: A word is given to soundex algorithm
+    Given A soundex instance
+    When I enter the character "<character>"
+    Then the it is equal to other character "<other character>"
+    Examples:
+      | character | other character |
+      | b         | f               |
+      | c         | g               |
+      | d         | t               |
