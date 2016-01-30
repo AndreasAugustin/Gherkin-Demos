@@ -10,6 +10,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -37,7 +38,7 @@ public class SoundexTestGherkin {
         assertEncoding(encoded);
     }
 
-    @When("^I enter the word as \"([^\"]*)\"$")
+    @When("^I enter the word \"([^\"]*)\"$")
     public void iEnterTheWordAs(final String word) {
         encode(word);
     }
@@ -45,14 +46,6 @@ public class SoundexTestGherkin {
     @Then("^the encoded length is equal to \"([^\"]*)\"$")
     public void theEncodedLengthIsEqualTo(final int length) {
         assertThat(_encoded.length(), is(equalTo(length)));
-    }
-
-    private void encode(final String word) {
-        _encoded = _soundex.encode(word);
-    }
-
-    private void assertEncoding(final String encoded) {
-        assertThat(encoded, is(equalTo(_encoded)));
     }
 
     @When("^I enter the character \"([^\"]*)\"$")
@@ -64,5 +57,23 @@ public class SoundexTestGherkin {
     public void theItIsEqualToOtherCharacter(final Character otherCharacter) {
         String otherEncodedDigit = _soundex.encodedDigit(otherCharacter);
         assertThat(otherEncodedDigit, is(equalTo(_encodedDigit)));
+    }
+
+    @When("^I enter the lower case word \"([^\"]*)\"$")
+    public void iEnterTheLowerCaseWord(final String word) {
+        encode(word);
+    }
+
+    @Then("^the encoded first letter is equal to \"([^\"]*)\"$")
+    public void theEncodedFirstLetterIsEqualTo(String encodedFirstLetter) {
+        assertThat(_encoded, startsWith(encodedFirstLetter));
+    }
+
+    private void encode(final String word) {
+        _encoded = _soundex.encode(word);
+    }
+
+    private void assertEncoding(final String encoded) {
+        assertThat(encoded, is(equalTo(_encoded)));
     }
 }

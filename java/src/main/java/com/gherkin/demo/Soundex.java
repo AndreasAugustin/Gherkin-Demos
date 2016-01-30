@@ -49,12 +49,16 @@ public class Soundex {
 
     public String encode(final String word) {
 
-        return zeroPad(head(word) + encodedDigits(tail(word)));
+        return zeroPad(head(upperFront(word)) + encodedDigits(tail(word)));
     }
 
     public String encodedDigit(char letter) {
         final String ret = encodingsMap.get(letter);
         return ret != null ? ret : EMPTY_STRING;
+    }
+
+    private String upperFront(final String string) {
+        return string.substring(0, 1).toUpperCase();
     }
 
     private String head(final String word) {
