@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package com.gherkin.demo.gherkin.steps;
 
 import com.gherkin.demo.Soundex;
@@ -22,13 +26,31 @@ public class SoundexTestGherkin {
         _soundex = new Soundex();
     }
 
-    @When("^i enter a word as \"([^\"]*)\"$")
+    @When("^I enter a word as \"([^\"]*)\"$")
     public void iEnterAWordAs(final String word) {
-        _encoded = _soundex.encode(word);
+        encode(word);
     }
 
     @Then("^it is encoded to \"([^\"]*)\"$")
     public void itIsEncodedTo(final String encoded) {
-        assertThat(_encoded, is(equalTo(encoded)));
+        assertEncoding(encoded);
+    }
+
+    @When("^I enter the word as \"([^\"]*)\"$")
+    public void iEnterTheWordAs(final String word) {
+        encode(word);
+    }
+
+    @Then("^the encoded length is equal to \"([^\"]*)\"$")
+    public void theEncodedLengthIsEqualTo(final int length) {
+        assertThat(_encoded.length(), is(equalTo(length)));
+    }
+
+    private void encode(final String word) {
+        _encoded = _soundex.encode(word);
+    }
+
+    private void assertEncoding(final String encoded) {
+        assertThat(encoded, is(equalTo(_encoded)));
     }
 }
