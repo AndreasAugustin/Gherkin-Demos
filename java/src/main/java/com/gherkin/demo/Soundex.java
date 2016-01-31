@@ -76,26 +76,34 @@ public class Soundex {
 
     private String encodedDigits(final String word) {
         if (word.length() == 0) {
-            return EMPTY_STRING;
+            return NOT_A_DIGIT;
         }
 
-        StringBuilder builder = new StringBuilder(
-                String.valueOf(word.charAt(0)));
+        return encodeTail(encodeHead(word), word).toString();
+    }
 
+    private StringBuilder encodeHead(final String word) {
+        return new StringBuilder(encodedDigit(word.charAt(0)));
+    }
+
+    private StringBuilder encodeTail(StringBuilder encoding, final String word) {
         for (char letter : tail(word).toCharArray()) {
-            if (isComplete(builder)) {
+            if (isComplete(encoding)) {
                 break;
             }
 
-            String digit = encodedDigit(letter);
-
-            if (!Objects.equals(digit, NOT_A_DIGIT) &&
-                    !Objects.equals(digit, lastDigit(builder.toString()))) {
-                builder.append(encodedDigit(letter));
-            }
+            encodeLetter(encoding, letter);
         }
 
-        return builder.toString();
+        return encoding;
+    }
+
+    private void encodeLetter(StringBuilder encoding, final Character letter) {
+        String digit = encodedDigit(letter);
+        if (!Objects.equals(digit, NOT_A_DIGIT) &&
+                !Objects.equals(digit, lastDigit(encoding.toString()))) {
+            encoding.append(digit);
+        }
     }
 
     private String lastDigit(final String encoding) {

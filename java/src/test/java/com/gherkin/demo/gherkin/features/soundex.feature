@@ -21,6 +21,7 @@ Feature: Soundex algorithm
       | Abfcgdt            | A123    |
       | BaAeEiIoOuUhHyYcdl | B234    |
       | Bbcd               | B230    |
+      | Jbob               | J110    |
 
   Scenario: A word is given to soundex algorithm
     Given A soundex instance
