@@ -13,7 +13,7 @@ def given_a_soundex_instance(step):
     print "given_a_soundex_instance ", "\n"
 
 
-@step('I enter a word as \"([^\"]*)\"$')
+@step('I enter a word as "(?P<word>.+)"')
 def when_i_enter_a_word_as(step, word):
     """
     :type step: lettuce.core.Step
@@ -39,7 +39,6 @@ def when_i_enter_the_word_as(step, word):
     :type step: lettuce.core.Step
     """
     print "when_i_enter_the_word_as ", word, "\n"
-
     world.encoded = world.soundex.encode(word)
 
 
@@ -48,24 +47,26 @@ def then_the_encoded_length_is_equal_to(step, length):
     """
     :type step: lettuce.core.Step
     """
-    print "then_the_encoded_length_is_equal_to 4u", "\n"
-    assert_equals(length, world.encode)
+    print "then_the_encoded_length_is_equal_to ", length, "\n"
+    assert_equals(length, len(world.encoded))
 
 
-@step('I enter the lower case word "abcd"')
-def when_i_enter_the_lower_case_word(step):
+@step('I enter the lower case word \"([^\"]*)\"$')
+def when_i_enter_the_lower_case_word(step, word):
     """
     :type step: lettuce.core.Step
     """
-    print "when_i_enter_the_lower_case_word abcd", "\n"
+    print "when_i_enter_the_lower_case_word ", word, "\n"
+    world.encoded = world.soundex.encode(word)
 
 
-@step('the encoded first letter is equal to "A"')
-def then_the_encoded_first_letter_is_equal_to(step):
+@step('the encoded first letter is equal to "([^\"]*)\"$')
+def then_the_encoded_first_letter_is_equal_to(step, expect):
     """
     :type step: lettuce.core.Step
     """
-    print "then_the_encoded_first_letter_is_equal_to", "\n"
+    print "then_the_encoded_first_letter_is_equal_to", expect, "\n"
+    assert_equals(expect, world.encoded[0])
 
 
 @step('I enter the character "(?P<character>.+)"')
