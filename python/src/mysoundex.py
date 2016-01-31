@@ -1,14 +1,14 @@
-class Soundex(object):
+class MySoundex(object):
     max_code_length = 4
     not_a_digit = "*"
     empty_string = ""
     encodingsMap = {
-        'b': 1, 'f': 1, 'p': 1, 'v': 1,
-        'c': 2, 'g': 2, 'j': 2, 'k': 2, 'q': 2, 's': 2, 'x': 2, 'z': 2,
-        'd': 3, 't': 3,
-        'l': 4,
-        'm': 5, 'n': 5,
-        'r': 6
+        'b': '1', 'f': '1', 'p': '1', 'v': '1',
+        'c': '2', 'g': '2', 'j': '2', 'k': '2', 'q': '2', 's': '2', 'x': '2', 'z': '2',
+        'd': '3', 't': '3',
+        'l': '4',
+        'm': '5', 'n': '5',
+        'r': '6'
     }
 
     def __init__(self):

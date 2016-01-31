@@ -1,6 +1,7 @@
 from lettuce import step, world
+from nose.tools import assert_equals
 
-from soundex import Soundex
+from src.mysoundex import MySoundex
 
 
 @step("A soundex instance")
@@ -8,11 +9,11 @@ def given_a_soundex_instance(step):
     """
     :type step: lettuce.core.Step
     """
-    world.soundex = Soundex()
+    world.soundex = MySoundex()
     print "given_a_soundex_instance ", "\n"
 
 
-@step('I enter a word as "(?P<word>.+)"')
+@step('I enter a word as \"([^\"]*)\"$')
 def when_i_enter_a_word_as(step, word):
     """
     :type step: lettuce.core.Step
@@ -29,22 +30,26 @@ def then_it_is_encoded_to(step, encoded):
     :type encoded: str
     """
     print "then_it_is_encoded_to ", encoded,  "\n",  "\n"
+    assert_equals(encoded, world.encoded)
 
 
-@step('I enter the word "Dcdlb"')
-def when_i_enter_the_word_as(step):
+@step('I enter the word \"([^\"]*)\"$')
+def when_i_enter_the_word_as(step, word):
     """
     :type step: lettuce.core.Step
     """
-    print "when_i_enter_the_word_as Dcdlb", "\n"
+    print "when_i_enter_the_word_as ", word, "\n"
+
+    world.encoded = world.soundex.encode(word)
 
 
-@step('the encoded length is equal to "4u"')
-def then_the_encoded_length_is_equal_to(step):
+@step('the encoded length is equal to \"([^\"]*)\"$')
+def then_the_encoded_length_is_equal_to(step, length):
     """
     :type step: lettuce.core.Step
     """
     print "then_the_encoded_length_is_equal_to 4u", "\n"
+    assert_equals(length, world.encode)
 
 
 @step('I enter the lower case word "abcd"')
