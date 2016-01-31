@@ -49,8 +49,8 @@ public class Soundex {
     }
 
     public String encode(final String word) {
-        return zeroPad(upperFront(head(upperFront(word)))
-                + encodedDigits(tail(word)));
+        return zeroPad(upperFront(head(word))
+                + tail(encodedDigits(word)));
     }
 
     public String encodedDigit(char letter) {
@@ -75,9 +75,14 @@ public class Soundex {
     }
 
     private String encodedDigits(final String word) {
-        StringBuilder builder = new StringBuilder();
+        if (word.length() == 0) {
+            return EMPTY_STRING;
+        }
 
-        for (char letter : word.toCharArray()) {
+        StringBuilder builder = new StringBuilder(
+                String.valueOf(word.charAt(0)));
+
+        for (char letter : tail(word).toCharArray()) {
             if (isComplete(builder)) {
                 break;
             }
@@ -102,7 +107,7 @@ public class Soundex {
     }
 
     private Boolean isComplete(final StringBuilder encoding) {
-        return encoding.length() == MAX_CODE_LENGTH - 1;
+        return encoding.length() == MAX_CODE_LENGTH;
     }
 
     private String zeroPad(String word) {

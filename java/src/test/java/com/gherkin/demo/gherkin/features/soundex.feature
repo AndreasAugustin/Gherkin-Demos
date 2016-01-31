@@ -20,7 +20,7 @@ Feature: Soundex algorithm
       | Baeiouhycdl        | B234    |
       | Abfcgdt            | A123    |
       | BaAeEiIoOuUhHyYcdl | B234    |
-      #| Bbcd               | B230    |
+      | Bbcd               | B230    |
 
   Scenario: A word is given to soundex algorithm
     Given A soundex instance
