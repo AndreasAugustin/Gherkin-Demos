@@ -1,43 +1,56 @@
+require File.dirname(__FILE__) + '/../../../src/my_soundex.rb'
+
 Given(/^A soundex instance$/) do
-  pending
+  @soundex = MySoundex.new
 end
 
 When(/^I enter a word as "([^"]*)"$/) do |arg|
-  pending
+  print 'When I enter a word as ', arg, "\n"
+  @encoded = @soundex.encode arg
 end
 
 Then(/^it is encoded to "([^"]*)"$/) do |arg|
-  pending
+  print 'Then it is encoded to ', arg, "\n"
+  expect(@encoded).to eq arg
 end
 
 When(/^I enter the word "([^"]*)"$/) do |arg|
-  pending
+  print 'When I enter the word ', arg, "\n"
+  @encoded = @soundex.encode arg
 end
 
 Then(/^the encoded length is equal to "([^"]*)"$/) do |arg|
-  pending
+  print 'Then the encoded length is equal to ', arg, "\n"
+  expect(@encoded.length).to eq arg
 end
 
 When(/^I enter the lower case word "([^"]*)"$/) do |arg|
-  pending
+  print 'When I enter the lower case word ', arg, "\n"
+  @encoded = @soundex.encode arg
 end
 
 Then(/^the encoded first letter is equal to "([^"]*)"$/) do |arg|
-  pending
+  print 'Then the encoded first letter is equal to ', arg, "\n"
+  expect(@encoded).to eq arg
 end
 
 When(/^I enter the character "([^"]*)"$/) do |arg|
-  pending
+  print 'When I enter the character ', arg, "\n"
+  @encoded = @soundex.encode arg
 end
 
 Then(/^it is equal to other encoded character "([^"]*)"$/) do |arg|
-  pending
+  print 'Then it is equal to other encoded character ', arg, "\n"
+  other_encoded_digit = @soundex.encode arg
+  expect(@encoded).to eq other_encoded_digit
 end
 
 When(/^I enter the string "([^"]*)"$/) do |arg|
-  pending
+  print 'When I enter the string ', arg, "\n"
+  @encoded = @soundex.encode arg
 end
 
 Then(/^it is equal to other encoded string "([^"]*)"$/) do |arg|
-  pending
+  print 'Then it is equal to other encoded string ', arg, "\n"
+  expect(@encoded).to eq arg
 end
