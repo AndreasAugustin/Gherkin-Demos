@@ -36,12 +36,12 @@ end
 
 When(/^I enter the character "([^"]*)"$/) do |arg|
   print 'When I enter the character ', arg, "\n"
-  @encoded = @soundex.encode arg
+  @encoded = @soundex.encoded_digit arg
 end
 
 Then(/^it is equal to other encoded character "([^"]*)"$/) do |arg|
   print 'Then it is equal to other encoded character ', arg, "\n"
-  other_encoded_digit = @soundex.encode arg
+  other_encoded_digit = @soundex.encoded_digit arg
   expect(@encoded).to eq other_encoded_digit
 end
 
