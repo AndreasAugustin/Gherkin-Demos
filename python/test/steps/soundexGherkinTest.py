@@ -76,6 +76,7 @@ def when_i_enter_the_character(step, character):
     :type character: str
     """
     print "when_i_enter_the_character ", character, "\n"
+    world.encoded = world.soundex.encodedDigit(character)
 
 
 @step('it is equal to other encoded character "(?P<other_character>.+)"')
@@ -85,6 +86,8 @@ def then_it_is_equal_to_other_encoded_character(step, other_character):
     :type other_character: str
     """
     print "then_it_is_equal_to_other_encoded_character ", other_character, "\n"
+    other_encoded_char = world.soundex.encodedDigit(other_character)
+    assert_equals(world.expected, other_encoded_char)
 
 
 @step('I enter the string "(?P<string>.+)"')
@@ -94,6 +97,7 @@ def when_i_enter_the_string(step, string):
     :type string: str
     """
     print "when_i_enter_the_string ", string, "\n"
+    world.encoded = world.soundex.encode(string)
 
 
 @step('it is equal to other encoded string "(?P<other_string>.+)"')
@@ -103,4 +107,6 @@ def then_it_is_equal_to_other_encoded_string(step, other_string):
     :type other_string: str
     """
     print "then_it_is_equal_to_other_encoded_string ", other_string, "\n"
+    other_encoded_string = world.soundex.encode(other_string)
+    assert_equals(world.encoded, other_encoded_string)
 
