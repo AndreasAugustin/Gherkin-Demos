@@ -2,9 +2,11 @@ Python Gherkin Demo
 ============
 
 ## Requirements
-    $ pip install lettuce
+    $ pip install behave
     
     $ pip install nose
+ 
+## Update
+    $ pit install -U behave
     
-## Run test
-    $ lettuce /path/to/example.feature
+    $ pip install -U nose
