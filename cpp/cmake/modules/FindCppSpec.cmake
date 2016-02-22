@@ -1,0 +1,7 @@
+if(NOT CppSpec_FOUND)
+    set(CppSpec_ROOT_DIR ${CMAKE_MODULE_PATH}/../../vendor/cppspec)
+    add_subdirectory(${CppSpec_ROOT_DIR} cppspec)
+    set(CppSpec_INCLUDE_DIRS ${CppSpec_ROOT_DIR}/include)
+    set(CppSpec_LIBRARY CppSpec)
+    set(CppSpec_FOUND TRUE)
+endif()
