@@ -24,7 +24,7 @@
     });
 
     gulp.task('doc', function() {
-        gulp.src("./lib/src/*.coffee")
+        gulp.src("./lib/coffee/*.coffee")
             .pipe(markdox()).on('error', util.log)
             .pipe(concat("doc.md")).on('error', util.log)
             .pipe(gulp.dest("./doc"));
