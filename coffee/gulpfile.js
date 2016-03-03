@@ -6,6 +6,8 @@
     var markdox = require('gulp-markdox'); // jshint ignore:line
     var concat = require('gulp-concat'); // jshint ignore:line
     var cucumber = require('gulp-cucumber'); // jshint ignore:line
+    var codo = require('gulp-codo'); // jshint ignore:line
+
 
     gulp.task('default', function() {
         // TODO(augustin) add some default stuff
@@ -23,11 +25,20 @@
             .pipe(gulp.dest('./lib/js/test/features/step_definitions/'));
     });
 
-    gulp.task('doc', function() {
+    gulp.task('doc-markdox', function() {
         gulp.src("./lib/coffee/*.coffee")
             .pipe(markdox()).on('error', util.log)
             .pipe(concat("doc.md")).on('error', util.log)
-            .pipe(gulp.dest("./doc"));
+            .pipe(gulp.dest("./doc-markdox/"));
+    });
+
+    gulp.task('doc-codo', function() {
+        gulp.src("./lib/coffee/*.coffee", {read: false})
+            .pipe(codo({
+                name: 'Soundex',
+                title: 'Soundex',
+                readme: './README.md'
+            })).on('error', util.log);
     });
 
     gulp.task('cucumber', function() {

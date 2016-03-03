@@ -7,28 +7,34 @@
 # @author andy andy.augustin@t-online.de
 ###
 
-#soundex = require('Soundex')
+Soundex = require('./../../../Soundex.js')
+assert = require('assert')
 
 module.exports = () ->
   "use strict"
   @.Given(/^A soundex instance$/,(callback) ->
-    callback.pending())
+    module.soundex = new Soundex()
+    callback())
 
   @.When(/^I enter a word as "([^"]*)"$/, (arg1, callback) ->
-    callback.pending())
+    module.encoded = module.soundex.encode(arg1))
 
   @.Then(/^it is encoded to "([^"]*)"$/, (arg1, callback) ->
-    callback.pending())
+    assert.equal(module.encoded, arg1))
 
 
-  @.When(/^I enter the word "([^"]*)"$/, (arg1) ->)
+  @.When(/^I enter the word "([^"]*)"$/, (arg1, callback) ->
+    module.encoded = module.soundex.encode(arg1)
+    callback())
 
   @.Then(/^the encoded length is equal to "([^"]*)"$/, (arg1, callback) ->
-    callback.pending())
+    assert.equal(module.encoded.length, parseInt(arg1))
+    callback())
 
 
   @.When(/^I enter the lower case word "([^"]*)"$/, (arg1, callback) ->
-    callback.pending())
+    module.encoded = module.soundex.encode(arg1)
+    callback())
 
   @.Then(/^the encoded first letter is equal to "([^"]*)"$/, (arg1, callback) ->
     callback.pending())
