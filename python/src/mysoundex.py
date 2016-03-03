@@ -85,6 +85,5 @@ class MySoundex(object):
 
     @staticmethod
     def __is_vowel(last_letter):
-        # TODO implement
-        return True
+        return last_letter in "aeiouy"
 
