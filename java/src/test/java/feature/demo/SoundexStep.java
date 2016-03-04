@@ -2,7 +2,7 @@
  * Copyright (c) 2016.
  */
 
-package com.gherkin.demo.gherkin.steps;
+package feature.demo;
 
 import com.gherkin.demo.Soundex;
 import cucumber.api.java.en.Given;
@@ -17,7 +17,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 /**
  * Created by andy on 1/30/16.
  */
-public class SoundexTestGherkin {
+public class SoundexStep {
 
     private Soundex _soundex;
     private String _encoded;

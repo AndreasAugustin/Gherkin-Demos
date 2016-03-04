@@ -1,7 +1,16 @@
 JAVA demo project for gherkin
 ========
 
-This project implements the soundex algorithm with JAVA.
 
-It requires maven.
+# Requires
+- maven
+
+# Project setup
+     $ git clone https://github.com/AndreasAugustin/Gherkin-Demos.git
+     $ cd java
+     
+# Running tests
+    $ mvn test
+
+
 
