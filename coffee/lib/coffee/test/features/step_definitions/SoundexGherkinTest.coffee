@@ -17,10 +17,12 @@ module.exports = () ->
     callback())
 
   @.When(/^I enter a word as "([^"]*)"$/, (arg1, callback) ->
-    module.encoded = module.soundex.encode(arg1))
+    module.encoded = module.soundex.encode(arg1)
+    callback())
 
   @.Then(/^it is encoded to "([^"]*)"$/, (arg1, callback) ->
-    assert.equal(module.encoded, arg1))
+    assert.equal(module.encoded, arg1)
+    callback())
 
 
   @.When(/^I enter the word "([^"]*)"$/, (arg1, callback) ->
@@ -37,18 +39,25 @@ module.exports = () ->
     callback())
 
   @.Then(/^the encoded first letter is equal to "([^"]*)"$/, (arg1, callback) ->
-    callback.pending())
+    assert.equal(module.encoded.charAt(0), arg1)
+    callback())
 
 
   @.When(/^I enter the character "([^"]*)"$/, (arg1, callback) ->
-    callback.pending())
+    module.encoded = module.soundex.encode(arg1)
+    callback())
 
   @.Then(/^it is equal to other encoded character "([^"]*)"$/, (arg1, callback) ->
-    callback.pending())
+    otherEncoded = module.soundex.encode(arg1)
+    assert.equal(module.encoded, otherEncoded)
+    callback())
 
   @.When(/^I enter the string "([^"]*)"$/,  (arg1, callback) ->
-    callback.pending())
+    module.encoded = module.soundex.encode(arg1)
+    callback())
 
   @.Then(/^it is equal to other encoded string "([^"]*)"$/, (arg1, callback) ->
-    callback.pending())
+    otherEncoded = module.soundex.encode(arg1)
+    assert.equal(module.encoded, otherEncoded)
+    callback())
 

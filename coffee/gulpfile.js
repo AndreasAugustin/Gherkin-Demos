@@ -44,7 +44,7 @@
     gulp.task('cucumber', function() {
         gulp.src('./lib/js/test/features/*.feature')
             .pipe(cucumber({
-                'steps': './lib/js/test/features/steps/steps.js',
+                'steps': './lib/js/test/features/step_definitions/*.js',
                 //'format': 'summary'
             }));
     });
