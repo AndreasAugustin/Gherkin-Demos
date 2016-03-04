@@ -1,12 +1,16 @@
 Python Gherkin Demo
 ============
 
-## Requirements
-    $ pip install behave
+# Requires (listed in requirements.tx)
+- behave
+- nose
 
-    $ pip install nose
-
-## Update
-    $ pit install -U behave
-
-    $ pip install -U nose
+# Project setup
+    $ git clone https://github.com/AndreasAugustin/Gherkin-Demos.git
+    $ cd python
+    $ pip install -r requirements.txt
+    
+# Run tests
+    $ cd python
+    $ behave ./test/features/
+    
