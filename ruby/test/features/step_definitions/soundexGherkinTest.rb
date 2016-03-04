@@ -52,5 +52,6 @@ end
 
 Then(/^it is equal to other encoded string "([^"]*)"$/) do |arg|
   print 'Then it is equal to other encoded string ', arg, "\n"
-  expect(@encoded).to eq arg
+  other_encoded = @soundex.encode arg
+  expect(@encoded).to eq other_encoded
 end

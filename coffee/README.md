@@ -3,8 +3,14 @@ Gherkin demo for CoffeeScript
 
 # Requires
 - nodejs
-- gulp 
-    - $npm install -g gulp
+- node packages (listed in package.json)
+    - gulp
+    - gulp-codo
+    - gulp-coffee
+    - gulp-concat
+    - gulp-cucumber
+    - gulp-markdox
+    - gulp-util
 
 # Project setup
     $ git clone https://github.com/AndreasAugustin/Gherkin-Demos.git
@@ -14,7 +20,11 @@ Gherkin demo for CoffeeScript
 # Run gulp
     $ gulp coffee
     $ gulp coffeeGherkinTest
+    
+# Run tests (Step run gulp needs to be perfomred before)
     $ gulp cucumber
+or
+    $ cucumberjs lib/js/test/features/
     
 # Build documentation
     $ gulp doc
