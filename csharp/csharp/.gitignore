@@ -1,0 +1,7 @@
+﻿bin/
+obj/
+.vs/
+
+runtests.cmd
+SpecRunTestProfile.xsd
+Default.srprofile
