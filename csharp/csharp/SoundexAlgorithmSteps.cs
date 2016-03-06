@@ -1,75 +1,81 @@
-﻿using System;
-using TechTalk.SpecFlow;
+﻿
 
 namespace csharp
 {
+    using System;
+    using TechTalk.SpecFlow;
+    using FluentAssertions;
+    using System.Linq;
     [Binding]
     public class SoundexAlgorithmSteps
     {
+        private Soundex _soundex;
+        private string _encoded;
+
         [Given(@"A soundex instance")]
         public void GivenASoundexInstance()
         {
-            ScenarioContext.Current.Pending();
+            _soundex = new Soundex();
         }
         
         [When(@"I enter a word as ""(.*)""")]
-        public void WhenIEnterAWordAs(string p0)
+        public void WhenIEnterAWordAs(string word)
         {
-            ScenarioContext.Current.Pending();
+            _encoded = _soundex.Encode(word);
         }
         
         [When(@"I enter the word ""(.*)""")]
-        public void WhenIEnterTheWord(string p0)
+        public void WhenIEnterTheWord(string word)
         {
-            ScenarioContext.Current.Pending();
+            _encoded = _soundex.Encode(word);
         }
         
         [When(@"I enter the lower case word ""(.*)""")]
-        public void WhenIEnterTheLowerCaseWord(string p0)
+        public void WhenIEnterTheLowerCaseWord(string word)
         {
-            ScenarioContext.Current.Pending();
+            _encoded = _soundex.Encode(word);
         }
         
         [When(@"I enter the character ""(.*)""")]
-        public void WhenIEnterTheCharacter(string p0)
+        public void WhenIEnterTheCharacter(string character)
         {
-            ScenarioContext.Current.Pending();
+            _encoded = _soundex.EncodedDigit(character.First());
         }
         
         [When(@"I enter the string ""(.*)""")]
-        public void WhenIEnterTheString(string p0)
+        public void WhenIEnterTheString(string word)
         {
-            ScenarioContext.Current.Pending();
+            _encoded = _soundex.Encode(word);
         }
         
         [Then(@"it is encoded to ""(.*)""")]
-        public void ThenItIsEncodedTo(string p0)
+        public void ThenItIsEncodedTo(string encoded)
         {
-            ScenarioContext.Current.Pending();
+            _encoded.Should().Be(encoded);
         }
         
         [Then(@"the encoded length is equal to ""(.*)""")]
-        public void ThenTheEncodedLengthIsEqualTo(string p0)
+        public void ThenTheEncodedLengthIsEqualTo(int length)
         {
-            ScenarioContext.Current.Pending();
+            _encoded.Should().HaveLength(length);
         }
         
         [Then(@"the encoded first letter is equal to ""(.*)""")]
-        public void ThenTheEncodedFirstLetterIsEqualTo(string p0)
+        public void ThenTheEncodedFirstLetterIsEqualTo(string firstLetter)
         {
-            ScenarioContext.Current.Pending();
+            _encoded.Should().StartWith(firstLetter);
         }
         
         [Then(@"it is equal to other encoded character ""(.*)""")]
-        public void ThenItIsEqualToOtherEncodedCharacter(string p0)
+        public void ThenItIsEqualToOtherEncodedCharacter(string otherCharacter)
         {
-            ScenarioContext.Current.Pending();
+            _encoded.Should().Be(_soundex.EncodedDigit(otherCharacter.First()));
         }
         
         [Then(@"it is equal to other encoded string ""(.*)""")]
-        public void ThenItIsEqualToOtherEncodedString(string p0)
+        public void ThenItIsEqualToOtherEncodedString(string otherString)
         {
-            ScenarioContext.Current.Pending();
+            _encoded.Should().Be(_soundex.Encode(otherString));
         }
     }
 }

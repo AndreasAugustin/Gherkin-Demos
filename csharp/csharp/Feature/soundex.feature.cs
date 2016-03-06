@@ -178,7 +178,7 @@ namespace csharp.Feature
 #line 28
     testRunner.When("I enter the word \"Dcdlb\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 29
-    testRunner.Then("the encoded length is equal to \"4u\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("the encoded length is equal to \"4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

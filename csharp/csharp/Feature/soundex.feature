@@ -26,7 +26,7 @@ Feature: Soundex algorithm
   Scenario: A word is given to soundex algorithm 2
     Given A soundex instance
     When I enter the word "Dcdlb"
-    Then the encoded length is equal to "4u"
+    Then the encoded length is equal to "4"
 
   Scenario: A word is given to soundex algorithm with lower case letter
     Given A soundex instance
