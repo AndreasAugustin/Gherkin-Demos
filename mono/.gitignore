@@ -2,12 +2,14 @@
 obj/
 .vs/
 
+packages/
+
 runtests.cmd
 SpecRunTestProfile.xsd
 Default.srprofile
 App.config
 
-idea/
+.idea/
 mono.sln.iml
 mono.userprefs
 
