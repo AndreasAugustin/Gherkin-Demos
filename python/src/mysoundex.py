@@ -38,13 +38,13 @@ class MySoundex(object):
         word_length = len(word)
         for letter_index in range(1, word_length):
             if self.__is_complete(encoding) is False:
-                encoding = self.__encode_letter(encoding, word[letter_index], word[letter_index-1])
+                encoding = self.__encode_letter(encoding, word[letter_index], word[letter_index - 1])
 
         return encoding
 
     def __encode_letter(self, encoding, letter, last_letter):
         digit = self.encoded_digit(letter)
-        if digit is not self.not_a_digit and (digit is not self.__last_digit(encoding) or self.__is_vowel(last_letter)):
+        if digit != self.not_a_digit and (digit is not self.__last_digit(encoding) or self.__is_vowel(last_letter)):
             encoding += digit
 
         return encoding
@@ -86,4 +86,3 @@ class MySoundex(object):
     @staticmethod
     def __is_vowel(last_letter):
         return last_letter in "aeiouy"
-
