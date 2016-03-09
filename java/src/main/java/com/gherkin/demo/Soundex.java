@@ -14,7 +14,6 @@ import java.util.Objects;
 
 public class Soundex {
 
-    private static final String EMPTY_STRING = "";
     private static final int MAX_CODE_LENGTH = 4;
     private static final Map<Character, String> encodingsMap = createMap();
     private static final String NOT_A_DIGIT = "*";
@@ -83,25 +82,26 @@ public class Soundex {
     }
 
     private StringBuilder encodeHead(final String word) {
+
         return new StringBuilder(encodedDigit(word.charAt(0)));
     }
 
     private StringBuilder encodeTail(StringBuilder encoding, final String word) {
-        for (char letter : tail(word).toCharArray()) {
-            if (isComplete(encoding)) {
-                break;
+        int wordLength = word.length();
+        for (int i = 1; i < wordLength; i++) {
+            if (!isComplete(encoding)) {
+                encodeLetter(encoding, word.charAt(i), word.charAt(i - 1));
             }
-
-            encodeLetter(encoding, letter);
         }
 
         return encoding;
     }
 
-    private void encodeLetter(StringBuilder encoding, final Character letter) {
+    private void encodeLetter(StringBuilder encoding, final Character letter,
+                              final Character lastLetter) {
         String digit = encodedDigit(letter);
         if (!Objects.equals(digit, NOT_A_DIGIT) &&
-                !Objects.equals(digit, lastDigit(encoding.toString()))) {
+                (!Objects.equals(digit, lastDigit(encoding.toString()))) || isVowel(lastLetter)) {
             encoding.append(digit);
         }
     }
@@ -128,5 +128,10 @@ public class Soundex {
         }
 
         return builder.toString();
+    }
+
+    private Boolean isVowel(final Character letter) {
+        final String vowels = "aeiouy";
+        return vowels.indexOf(lower(letter)) >= 0;
     }
 }
