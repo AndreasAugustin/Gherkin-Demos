@@ -1,6 +1,8 @@
 GHERKIN with CUCUMBER demos
 ========
 
+[![Join the chat at https://gitter.im/AndreasAugustin/Gherkin-Demos](https://badges.gitter.im/AndreasAugustin/Gherkin-Demos.svg)](https://gitter.im/AndreasAugustin/Gherkin-Demos?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This repository contains some demonstrations for gherkin in combination with cucumber in different programming languages.
 
 Every demo uses the same gherkin file for implementing the soundex algorithm:
