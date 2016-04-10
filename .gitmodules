@@ -1,0 +1,3 @@
+[submodule "Gherkin-Demos-coffee"]
+	path = Gherkin-Demos-coffee
+	url = git://github.com/AndreasAugustin/Gherkin-Demos-coffee.git

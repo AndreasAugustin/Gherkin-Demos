@@ -3,7 +3,9 @@ GHERKIN with CUCUMBER demos
 
 [![Join the chat at https://gitter.im/AndreasAugustin/Gherkin-Demos](https://badges.gitter.im/AndreasAugustin/Gherkin-Demos.svg)](https://gitter.im/AndreasAugustin/Gherkin-Demos?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This repository contains some demonstrations for gherkin in combination with cucumber in different programming languages.
+This repository contains some demonstrations for gherkin in combination with cucumber in different programming languages, included as submodules.
+
+	$ git submodule update --init
 
 Every demo uses the same gherkin file for implementing the soundex algorithm:
 
@@ -24,5 +26,6 @@ This rule also applies for the first letter.
 - Stop if the result is one letter and three numbers. Fill remaining with nulls.
 
 ```
+
 
 
