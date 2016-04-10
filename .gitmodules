@@ -1,3 +1,21 @@
 [submodule "Gherkin-Demos-coffee"]
 	path = Gherkin-Demos-coffee
 	url = git://github.com/AndreasAugustin/Gherkin-Demos-coffee.git
+[submodule "Gherkin-Demos-cpp"]
+	path = Gherkin-Demos-cpp
+	url = git://github.com/AndreasAugustin/Gherkin-Demos-cpp.git
+[submodule "Gherkin-Demos-csharp"]
+	path = Gherkin-Demos-csharp
+	url = git://github.com/AndreasAugustin/Gherkin-Demos-csharp.git
+[submodule "Gherkin-Demos-ruby"]
+	path = Gherkin-Demos-ruby
+	url = git://github.com/AndreasAugustin/Gherkin-Demos-ruby.git
+[submodule "Gherkin-Demos-mono"]
+	path = Gherkin-Demos-mono
+	url = git://github.com/AndreasAugustin/Gherkin-Demos-mono.git
+[submodule "Gherkin-Demos-python"]
+	path = Gherkin-Demos-python
+	url = git://github.com/AndreasAugustin/Gherkin-Demos-python.git
+[submodule "Gherkin-Demos-java"]
+	path = Gherkin-Demos-java
+	url = git://github.com/AndreasAugustin/Gherkin-Demos-java.git
