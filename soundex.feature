@@ -5,6 +5,7 @@ Feature: Soundex algorithm
     When I enter a word as "<word>"
     Then it is encoded to "<encoded>"
 
+
     # the word is the given word
     # encoded is the expected encoded value
     Examples:
