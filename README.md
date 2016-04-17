@@ -36,7 +36,10 @@ This rule also applies for the first letter.
 
 ### Gherkin-Demos-cpp
 
-[![Build Status](https://travis-ci.org/AndreasAugustin/Gherkin-Demos-cpp.svg?branch=master)](https://travis-ci.org/AndreasAugustin/Gherkin-Demos-cpp)
+[![Windows build status](https://ci.appveyor.com/api/projects/status/6m25id54pe7dhdv6?svg=true)](https://ci.appveyor.com/project/AndreasAugustin/gherkin-demos-cpp)
+
+[![Linux build Status](https://travis-ci.org/AndreasAugustin/Gherkin-Demos-cpp.svg?branch=master)](https://travis-ci.org/AndreasAugustin/Gherkin-Demos-cpp)
+
 
 ### Gherkin-Demos-csharp
 
