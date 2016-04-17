@@ -56,5 +56,8 @@ This rule also applies for the first letter.
 
 ### Gherkin-Demos-ruby
 
-[![Build Status](https://travis-ci.org/AndreasAugustin/Gherkin-Demos-ruby.svg?branch=master)](https://travis-ci.org/AndreasAugustin/Gherkin-Demos-ruby)
+[![Windows build status](https://ci.appveyor.com/api/projects/status/58panoqw87wdlsug?svg=true)](https://ci.appveyor.com/project/AndreasAugustin/gherkin-demos-ruby)
+
+[![Linux build Status](https://travis-ci.org/AndreasAugustin/Gherkin-Demos-ruby.svg?branch=master)](https://travis-ci.org/AndreasAugustin/Gherkin-Demos-ruby)
+
 
